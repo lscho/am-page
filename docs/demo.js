@@ -1,21 +1,3 @@
-<!DOCTYPE html>
-<html>
-
-<head>
-    <meta charset="utf-8" />
-    <title>amazeui-page demo</title>
-    <link rel="stylesheet" type="text/css" href="../dlist/amazeui.min.css">
-    <script type="text/javascript" src="../dlist/jquery.min.js"></script>
-    <script type="text/javascript" src="../dlist/amazeui.min.js"></script>
-    <script type="text/javascript" src="../dlist/amazeui.page.js"></script>
-</head>
-
-<body class="am-container">
-    <div class="am-panel am-panel-primary">
-        <div class="am-panel-hd">全功能演示</div>
-        <div class="am-panel-bd">
-            <div style="overflow-y: auto;max-height: 200px;">
-                <pre>
     //测试数据
     var data = [
         '北京',
@@ -120,18 +102,3 @@
             });
         })
     })
-            </pre>          
-            </div>
-    <div id="content"></div>
-    <div id="page">
-    </div>
-    <button id="remove">移除</button>
-    跳转到
-    <input id="curr" type="number" value="3" /> 页
-    <button id="set">go</button>
-    <script type="text/javascript" src="./demo.js"></script>
-        </div>
-    </div>
-</body>
-
-</html>

@@ -46,7 +46,7 @@
 		if(option.curr!=option.pages&&option.next)list.push({key:'next',value:option.next,page:option.curr+1});
 		var judge=function(option,index){
 			var result='<span>...</span>';
-			if(index<=((option.curr+option._next)<option.pages?option.curr-option._prev:option._prev)){
+			if(index<=((option.curr+option._next)<option.pages?option.curr-option._prev:option.pages-option.groups)){
 				result=option._status.prev?"":result;
 				option._status.prev=true;
 				return result;
@@ -58,7 +58,7 @@
 			}
 			return false;
 		}
-		var render=function(context,$el,index){
+		var render=function(context,$li,index){
 			var option=context.option,r;
 			//是否显示分页按钮
 			if(option.groups==0&&typeof index=="number"){
@@ -66,22 +66,22 @@
 			}
 			//数量
 			if(typeof index=="number"&&option.groups<option.pages){
-				if((r=judge(context.option,index))!==false){
+				if((r=judge(option,index))!==false){
 					return r;
 				}
 			}
 			//当前按钮
-			if(context.option.curr==index){
-				$el.addClass('am-active');
+			if(option.curr==index){
+				$li.addClass('am-active');
 			}
-			return $el;
+			return $li;
 		}
 		var _render=option.render?option.render:render;
 		for (var i in list) {
-			var $el=$('<li><a href="javascript:" data-page="'+list[i]['page']+'">'+list[i]['value']+'</a></li>');
+			var $li=$('<li><a href="javascript:" data-page="'+list[i]['page']+'">'+list[i]['value']+'</a></li>');
 			var res;
-			if(!option.render||!(res=option.render(this,$el,list[i]['key']))){
-				res=render(this,$el,list[i]['key']);
+			if(!option.render||!(res=option.render(this,$li,list[i]['key']))){
+				res=render(this,$li,list[i]['key']);
 			}
 			$ul.append(res);
 		}
@@ -117,7 +117,7 @@
 	}
 	
 	page.prototype.setCurr=function(curr,callback){
-		this.option.curr=curr;
+		this.option.curr=typeof curr=='number'?curr:parseInt(curr);
 		this._init();
 		if(callback)callback();
 	}
