@@ -5,21 +5,24 @@
 文档地址
 
 ###使用说明
-1. **获取**
+
+**1. 获取**
 
 - 直接下载：[下载地址](https://github.com/eyblog/am-page/archive/master.zip)
 
 - npm：暂未发布
 
-2. **引入文件**
+**2. 引入文件**
 依赖于amaze ui框架，需要先引入框架文件
 ```javascript
     <link rel="stylesheet" type="text/css" href="../dlist/amazeui.min.css">
     <script type="text/javascript" src="../dlist/jquery.min.js"></script>
     <script type="text/javascript" src="../dlist/amazeui.min.js"></script>
+
+    <script type="text/javascript" src="../dlist/amazeui.page.js"></script>
 ```
 
-3. ** 开始使用**
+**3. 开始使用**
 ```javascript
         $(element).page(option);
 ```
