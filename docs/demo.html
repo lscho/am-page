@@ -8,54 +8,91 @@
     <script type="text/javascript" src="../dlist/jquery.min.js"></script>
     <script type="text/javascript" src="../dlist/amazeui.min.js"></script>
     <script type="text/javascript" src="../dlist/amazeui.page.js"></script>
+    <style type="text/css">
+.am-input-group-label {background-color: #FFFFFF;border: 0px solid #ccc;}
+    </style>
 </head>
 
 <body class="am-container">
+    <h1>Data API调用</h1>
+    <div class="am-panel am-panel-primary">
+        <div class="am-panel-hd">Data API示例</div>
+        <div class="am-panel-bd">
+            <div style="overflow-y: auto;max-height: 100px;">
+                <pre>
+            &lt;div data-am-page="{pages:10}"&gt;&lt;/div&gt;
+                </pre>
+            </div>
+            <div data-am-page="{pages:10}">
+                
+            </div>
+        </div>  
+    </div>
+
+    <h1>JS调用</h1>
+    <div class="am-panel am-panel-primary">
+        <div class="am-panel-hd">普通示例</div>
+        <div class="am-panel-bd">
+            <div style="overflow-y: auto;max-height: 100px;">
+                <pre>$("#page1").page({pages:10});</pre>
+            </div>
+            <div id="page1">
+                
+            </div>
+        </div>  
+    </div>
+
+    <div class="am-panel am-panel-primary">
+        <div class="am-panel-hd">自定义文本并设置分页显示数量</div>
+        <div class="am-panel-bd">
+            <div style="overflow-y: auto;max-height: 180px;">
+                <pre>
+        $("#page2").page({
+            pages:10,
+            first: "首页", //设置false则不显示，默认为false  
+            last: "尾页", //设置false则不显示，默认为false      
+            prev: '<', //若不显示，设置false即可，默认为上一页
+            next: '>', //若不显示，设置false即可，默认为下一页
+            groups: 3, //连续显示分页数
+        });
+                </pre>
+            </div>
+            <div id="page2">
+                
+            </div>
+        </div>  
+    </div>  
+
+    <div class="am-panel am-panel-primary">
+        <div class="am-panel-hd">只出现上一页/下一页</div>
+        <div class="am-panel-bd">
+            <div style="overflow-y: auto;max-height: 150px;">
+                <pre>
+        $("#page3").page({
+            pages:10,
+            groups:0,
+            jump:function(context){
+                $("#tips3").html("共"+context.option.pages+"页，当前第"+context.option.curr+"页");
+            }
+        })                    
+                </pre>
+            </div>
+            <div id="page3">
+                
+            </div>
+            <div id="tips3">
+                
+            </div>
+        </div>  
+    </div>        
+
     <div class="am-panel am-panel-primary">
         <div class="am-panel-hd">全功能演示</div>
         <div class="am-panel-bd">
             <div style="overflow-y: auto;max-height: 200px;">
                 <pre>
     //测试数据
-    var data = [
-        '北京',
-        '上海',
-        '广州',
-        '深圳',
-        '杭州',
-        '长沙',
-        '合肥',
-        '宁夏',
-        '成都',
-        '西安',
-        '南昌',
-        '上饶',
-        '沈阳',
-        '济南',
-        '厦门',
-        '福州',
-        '九江',
-        '宜春',
-        '赣州',
-        '宁波',
-        '绍兴',
-        '无锡',
-        '苏州',
-        '徐州',
-        '东莞',
-        '佛山',
-        '中山',
-        '成都',
-        '武汉',
-        '青岛',
-        '天津',
-        '重庆',
-        '南京',
-        '九江',
-        '香港',
-        '澳门',
-        '台北'
-    ];
+    var data=["北京","上海","广州","深圳","杭州","长沙","合肥","宁夏","成都","西安","南昌","上饶","沈阳","济南","厦门","福州","九江","宜春","赣州","宁波","绍兴","无锡","苏州","徐州","东莞","佛山","中山","成都","武汉","青岛","天津","重庆","南京","九江","香港","澳门","台北"];
     var nums = 5; //每页出现的数量
     var pages = Math.ceil(data.length / nums); //得到总页数
 
@@ -65,7 +102,7 @@
             last = curr * nums - 1;
         last = last >= data.length ? (data.length - 1) : last;
         for (var i = (curr * nums - nums); i <= last; i++) {
-            str += '<li>' + data[i] + '</li>';
+            str += '&lt;li&gt;' + data[i] + '&lt;/li&gt;';
         }
         return str;
     };
@@ -122,16 +159,38 @@
     })
             </pre>          
             </div>
-    <div id="content"></div>
+<div class="am-panel am-panel-default am-margin-top">
+    <div class="am-panel-bd">
+        <ul id="content" class="am-list am-list-static"></ul>        
+    </div>
+</div>            
+    
     <div id="page">
     </div>
-    <button id="remove">移除</button>
-    跳转到
-    <input id="curr" type="number" value="3" /> 页
-    <button id="set">go</button>
-    <script type="text/javascript" src="./demo.js"></script>
+<div class="am-g">
+  <div class="am-u-lg-4">
+    <div class="am-input-group am-g">
+    <span class="am-input-group-btn">
+        <button id="remove" class="am-btn am-btn-danger am-btn-xs">移除组件</button>
+    </span>
+    <label class="am-input-group-label">
+        跳转到第
+    </label>
+    <input id="curr" type="number" class="am-form-field" value="3" />
+    <label class="am-input-group-label">
+        页
+    </label>    
+    <span class="am-input-group-btn">
+        <button id="set" class="am-btn am-btn-success am-btn-xs">go</button>
+    </span>
+    </div>
+  </div>
+</div>       
+
         </div>
     </div>
+
+    <script type="text/javascript" src="./demo.js"></script>
 </body>
 
 </html>

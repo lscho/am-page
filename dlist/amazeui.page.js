@@ -37,13 +37,13 @@
 		$element.html($ul)
 
 		var list=[];
-		if(option.curr>1&&option.prev)list.push({key:'prev',value:option.prev,page:option.curr-1});
+		if(option.curr>1&&option.prev!==false)list.push({key:'prev',value:option.prev||'上一页',page:option.curr-1});
 		if(option.first)list.push({key:'first',value:option.first,page:1});
 		for(var i=1;i<=option.pages;i++){
 			list.push({key:i,value:i,page:i});
 		}
 		if(option.last)list.push({key:'last',value:option.last,page:option.pages});
-		if(option.curr!=option.pages&&option.next)list.push({key:'next',value:option.next,page:option.curr+1});
+		if(option.curr!=option.pages&&option.next!==false)list.push({key:'next',value:option.next||'下一页',page:option.curr+1});
 		var judge=function(option,index){
 			var result='<span>...</span>';
 			if(index<=((option.curr+option._next)<option.pages?option.curr-option._prev:option.pages-option.groups)){
@@ -130,4 +130,8 @@
 			});
 		}
 	});
+	if($("[data-am-page]").length>1){
+		console.log($("[data-am-page]"))
+	}
+	
 }(jQuery);

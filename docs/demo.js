@@ -1,57 +1,39 @@
-    //测试数据
-    var data = [
-        '北京',
-        '上海',
-        '广州',
-        '深圳',
-        '杭州',
-        '长沙',
-        '合肥',
-        '宁夏',
-        '成都',
-        '西安',
-        '南昌',
-        '上饶',
-        '沈阳',
-        '济南',
-        '厦门',
-        '福州',
-        '九江',
-        '宜春',
-        '赣州',
-        '宁波',
-        '绍兴',
-        '无锡',
-        '苏州',
-        '徐州',
-        '东莞',
-        '佛山',
-        '中山',
-        '成都',
-        '武汉',
-        '青岛',
-        '天津',
-        '重庆',
-        '南京',
-        '九江',
-        '香港',
-        '澳门',
-        '台北'
-    ];
-    var nums = 5; //每页出现的数量
-    var pages = Math.ceil(data.length / nums); //得到总页数
-
-    var thisDate = function(curr) {
-        //此处只是演示，实际场景通常是返回已经当前页已经分组好的数据
-        var str = '',
-            last = curr * nums - 1;
-        last = last >= data.length ? (data.length - 1) : last;
-        for (var i = (curr * nums - nums); i <= last; i++) {
-            str += '<li>' + data[i] + '</li>';
-        }
-        return str;
-    };
     $(function() {
+        /*普通实例*/
+        $("#page1").page({pages:10});
+        /*自定义文本*/
+        $("#page2").page({
+            pages:10,
+            first: "首页", //设置false则不显示，默认为false  
+            last: "尾页", //设置false则不显示，默认为false      
+            prev: '<', //若不显示，设置false即可，默认为上一页
+            next: '>', //若不显示，设置false即可，默认为下一页
+            groups: 3, //连续显示分页数
+        });
+        /*只出现上一页下一页*/
+        $("#page3").page({
+            pages:10,
+            groups:0,
+            jump:function(context){
+                $("#tips3").html("共"+context.option.pages+"页，当前第"+context.option.curr+"页");
+            }
+        })
+        /*全功能演示*/
+        //测试数据
+        var data=["北京","上海","广州","深圳","杭州","长沙","合肥","宁夏","成都","西安","南昌","上饶","沈阳","济南","厦门","福州","九江","宜春","赣州","宁波","绍兴","无锡","苏州","徐州","东莞","佛山","中山","成都","武汉","青岛","天津","重庆","南京","九江","香港","澳门","台北"];
+        var nums = 5; //每页出现的数量
+        var pages = Math.ceil(data.length / nums); //得到总页数
+
+        var thisDate = function(curr) {
+            //此处只是演示，实际场景通常是返回已经当前页已经分组好的数据
+            var str = '',
+                last = curr * nums - 1;
+            last = last >= data.length ? (data.length - 1) : last;
+            for (var i = (curr * nums - nums); i <= last; i++) {
+                str += '<li>' + data[i] + '</li>';
+            }
+            return str;
+        };
         //返回的是一个page示例，拥有实例方法
         var $page = $("#page").page({
             pages: pages, //页数
