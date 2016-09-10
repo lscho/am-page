@@ -18,6 +18,20 @@
                 $("#tips3").html("共"+context.option.pages+"页，当前第"+context.option.curr+"页");
             }
         })
+        /**/
+        $("#page4").page({
+            pages:10,
+            groups: 0, //连续显示分页数
+            prev: false, //若不显示，设置false即可，默认为上一页
+            jump:function(context,first){
+                if(!first){     //如果第一页数据也使用ajax获取，这里不需要判断
+                    $.get('ajax_return.html?page='+context.option.curr,function(html){
+                        $("#tips4").append(html);   //可以追加也可以覆盖
+                    });
+                }
+            }
+        })
+
         /*全功能演示*/
         //测试数据
         var data=["北京","上海","广州","深圳","杭州","长沙","合肥","宁夏","成都","西安","南昌","上饶","沈阳","济南","厦门","福州","九江","宜春","赣州","宁波","绍兴","无锡","苏州","徐州","东莞","佛山","中山","成都","武汉","青岛","天津","重庆","南京","九江","香港","澳门","台北"];
@@ -71,16 +85,28 @@
             }
         });
 
+        $("#page").on('remove.page.amui',function(){
+            console.log('移除前会触发remove.page.amui事件');
+        });
+
         $("#remove").click(function() {
             $page.remove(function() {
                 console.log('移除分页组件成功');
             })
         })
 
+        $("#page").on('removed.page.amui',function(){
+            console.log('移除后会触发removed.page.amui事件');
+        }); 
+
+        $("#page").on('jump.page.amui',function(){
+            console.log('点击分页按钮时会触发jump.page.amui事件');
+        });                
+
         $("#set").click(function() {
             var page = $("#curr").val();
             $page.setCurr(page, function() {
                 console.log('跳转到第' + page + "页");
             });
-        })
+        });
     })

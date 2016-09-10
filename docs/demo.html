@@ -18,11 +18,9 @@
     <div class="am-panel am-panel-primary">
         <div class="am-panel-hd">Data API示例</div>
         <div class="am-panel-bd">
-            <div style="overflow-y: auto;max-height: 100px;">
                 <pre>
             &lt;div data-am-page="{pages:10}"&gt;&lt;/div&gt;
                 </pre>
-            </div>
             <div data-am-page="{pages:10}">
                 
             </div>
@@ -33,9 +31,7 @@
     <div class="am-panel am-panel-primary">
         <div class="am-panel-hd">普通示例</div>
         <div class="am-panel-bd">
-            <div style="overflow-y: auto;max-height: 100px;">
                 <pre>$("#page1").page({pages:10});</pre>
-            </div>
             <div id="page1">
                 
             </div>
@@ -45,7 +41,6 @@
     <div class="am-panel am-panel-primary">
         <div class="am-panel-hd">自定义文本并设置分页显示数量</div>
         <div class="am-panel-bd">
-            <div style="overflow-y: auto;max-height: 180px;">
                 <pre>
         $("#page2").page({
             pages:10,
@@ -56,7 +51,6 @@
             groups: 3, //连续显示分页数
         });
                 </pre>
-            </div>
             <div id="page2">
                 
             </div>
@@ -66,7 +60,6 @@
     <div class="am-panel am-panel-primary">
         <div class="am-panel-hd">只出现上一页/下一页</div>
         <div class="am-panel-bd">
-            <div style="overflow-y: auto;max-height: 150px;">
                 <pre>
         $("#page3").page({
             pages:10,
@@ -76,7 +69,6 @@
             }
         })                    
                 </pre>
-            </div>
             <div id="page3">
                 
             </div>
@@ -84,12 +76,41 @@
                 
             </div>
         </div>  
-    </div>        
+    </div> 
+
+    <div class="am-panel am-panel-primary">   
+        <div class="am-panel-hd">ajax无限加载流</div>
+        <div class="am-panel-bd">
+            <div class="am-alert am-alert-danger" data-am-alert>
+            <button type="button" class="am-close">&times;</button>
+                <p>在web下打开，不要以file形式打开</p>
+            </div>        
+                <pre>
+                    $("#page4").page({
+                        pages:10,
+                        groups: 0, //连续显示分页数
+                        prev: false, //若不显示，设置false即可，默认为上一页
+                        jump:function(context,first){
+                            if(!first){     //如果第一页数据也使用ajax获取，这里不需要判断
+                                $.get('ajax_return.html?page='+context.option.curr,function(html){
+                                    $("#tips4").append(html);   //可以追加也可以覆盖
+                                });
+                            }
+                        }
+                    })                    
+                </pre>
+            <ul id="tips4" class="am-list am-list-static">
+                <li>这里是默认内容</li>
+            </ul>            
+            <div id="page4">
+                
+            </div>          
+        </div>  
+    </div>           
 
     <div class="am-panel am-panel-primary">
         <div class="am-panel-hd">全功能演示</div>
         <div class="am-panel-bd">
-            <div style="overflow-y: auto;max-height: 200px;">
                 <pre>
     //测试数据
     var data=["北京","上海","广州","深圳","杭州","长沙","合肥","宁夏","成都","西安","南昌","上饶","沈阳","济南","厦门","福州","九江","宜春","赣州","宁波","绍兴","无锡","苏州","徐州","东莞","佛山","中山","成都","武汉","青岛","天津","重庆","南京","九江","香港","澳门","台北"];
@@ -157,8 +178,7 @@
             });
         })
     })
-            </pre>          
-            </div>
+            </pre>
 <div class="am-panel am-panel-default am-margin-top">
     <div class="am-panel-bd">
         <ul id="content" class="am-list am-list-static"></ul>        

@@ -106,13 +106,16 @@
 
 	page.prototype._jump=function(){
 		if(this.option.jump){
+			this.$element.trigger('jump.page.amui');
 			this.option.jump(this,this.first);
 		}
 		this.first=false;
 	}
 	
 	page.prototype.remove=function(callback){
+		this.$element.trigger('remove.page.amui');
 		this.$element.remove();
+		this.$element.trigger('removed.page.amui');
 		if(callback)callback();
 	}
 	
@@ -130,8 +133,13 @@
 			});
 		}
 	});
-	if($("[data-am-page]").length>1){
-		console.log($("[data-am-page]"))
-	}
-	
+	/*
+	$(function(){
+		if($("[data-am-page]").length>0){
+			var $element=$("[data-am-page]");
+			console.log(typeof $element.data('am-page'))
+			//$element.page(JSON.parse());
+		}
+	})
+	*/
 }(jQuery);
