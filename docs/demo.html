@@ -14,18 +14,40 @@
 </head>
 
 <body class="am-container">
+<section class="amp-banner">
+  <div class="am-container">
+    <h1>Amaze UI Page</h1>
+    <p class="">Amaze UI 分页插件</p>
+  </div>
+</section>
     <h1>Data API调用</h1>
     <div class="am-panel am-panel-primary">
-        <div class="am-panel-hd">Data API示例</div>
+        <div class="am-panel-hd">普通示例</div>
         <div class="am-panel-bd">
                 <pre>
-            &lt;div data-am-page="{pages:10}"&gt;&lt;/div&gt;
+&lt;div data-am-page="{pages:10}"&gt;&lt;/div&gt;
                 </pre>
             <div data-am-page="{pages:10}">
                 
             </div>
         </div>  
     </div>
+
+    <div class="am-panel am-panel-primary">
+        <div class="am-panel-hd">使用函数</div>
+        <div class="am-panel-bd">
+                <pre>
+var jump = function(context) {//注意在全局作用域下定义
+    $("#tips").html('当前第：' + context.option.curr + "页");
+}                
+&lt;div data-am-page="{pages:10,jump:jump}"&gt;&lt;/div&gt;
+                </pre>
+            <div data-am-page="{pages:10,jump:'jump'}">
+                
+            </div>
+            <div id="tips"></div>
+        </div>  
+    </div>    
 
     <h1>JS调用</h1>
     <div class="am-panel am-panel-primary">
@@ -76,10 +98,10 @@
                 
             </div>
         </div>  
-    </div> 
+    </div>    
 
     <div class="am-panel am-panel-primary">   
-        <div class="am-panel-hd">ajax无限加载流</div>
+        <div class="am-panel-hd">ajax无限加载</div>
         <div class="am-panel-bd">
             <div class="am-alert am-alert-danger" data-am-alert>
             <button type="button" class="am-close">&times;</button>
@@ -106,7 +128,17 @@
                 
             </div>          
         </div>  
-    </div>           
+    </div>   
+
+    <div class="am-panel am-panel-primary">
+        <div class="am-panel-hd">常规跳转</div>
+        <div class="am-panel-bd">
+            <pre>$("#page1").page({pages:10});</pre>
+            <div id="page5">
+                
+            </div>
+        </div>  
+    </div>            
 
     <div class="am-panel am-panel-primary">
         <div class="am-panel-hd">全功能演示</div>
@@ -209,7 +241,6 @@
 
         </div>
     </div>
-
     <script type="text/javascript" src="./demo.js"></script>
 </body>
 

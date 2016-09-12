@@ -1,10 +1,10 @@
-!function($){
+!function($,UI){
 	"use strict";
 	function page(data){
 		this.$element=data.element;
 		this.first=true;
-		data.option.curr=data.option.curr||1;
-		data.option.groups=(typeof data.option.groups!="undefined")?data.option.groups:5;
+		data.option.curr=parseInt(data.option.curr)||1;
+		data.option.groups=(typeof data.option.groups!="undefined")?parseInt(data.option.groups):5;
 		this.option=data.option;
 		this._init();
 	}
@@ -44,6 +44,7 @@
 		}
 		if(option.last)list.push({key:'last',value:option.last,page:option.pages});
 		if(option.curr!=option.pages&&option.next!==false)list.push({key:'next',value:option.next||'下一页',page:option.curr+1});
+		//groups处理
 		var judge=function(option,index){
 			var result='<span>...</span>';
 			if(index<=((option.curr+option._next)<option.pages?option.curr-option._prev:option.pages-option.groups)){
@@ -58,6 +59,7 @@
 			}
 			return false;
 		}
+		//渲染
 		var render=function(context,$li,index){
 			var option=context.option,r;
 			//是否显示分页按钮
@@ -120,7 +122,7 @@
 	}
 	
 	page.prototype.setCurr=function(curr,callback){
-		this.option.curr=typeof curr=='number'?curr:parseInt(curr);
+		this.option.curr=parseInt(curr);
 		this._init();
 		if(callback)callback();
 	}
@@ -133,13 +135,15 @@
 			});
 		}
 	});
-	/*
-	$(function(){
-		if($("[data-am-page]").length>0){
-			var $element=$("[data-am-page]");
-			console.log(typeof $element.data('am-page'))
-			//$element.page(JSON.parse());
-		}
-	})
-	*/
-}(jQuery);
+	UI.ready(function(context) {
+		$('[data-am-page]', context).each(function(){
+			var option = UI.utils.parseOptions($(this).attr('data-am-page'));
+			//将data api中的参数转为函数
+			option.before=window[option.before];
+			option.render=window[option.render];
+			option.after=window[option.after];
+			option.jump=window[option.jump];
+		  	$(this).page(option);
+		})
+	});
+}(jQuery,jQuery.AMUI);

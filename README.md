@@ -2,7 +2,7 @@
 
 [demo地址](https://eyblog.github.io/am-page/docs/demo.html "demo地址")
 
-文档地址[正在整理]
+[文档地址](https://eyblog.github.io/am-page/docs/doc.md "文档地址")
 
 ###使用说明
 
@@ -23,6 +23,10 @@
 ```
 
 **3. 开始使用**
+
 ```javascript
         $(element).page(option);
 ```
+
+
+
