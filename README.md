@@ -2,7 +2,7 @@
 
 [demo地址](https://eyblog.github.io/am-page/docs/demo.html "demo地址")
 
-[文档地址](https://eyblog.github.io/am-page/docs/doc.md "文档地址")
+[文档地址](https://github.com/eyblog/am-page/blob/gh-pages/docs/doc.md "文档地址")
 
 ###使用说明
 
