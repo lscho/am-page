@@ -1,4 +1,4 @@
-## Amaze ui 分页插件[未完成]
+## Amaze ui 分页插件
 
 [demo地址](https://lscho.github.io/am-page/docs/demo.html "demo地址")
 
@@ -10,7 +10,7 @@
 
 - 直接下载：[下载地址](https://github.com/lscho/am-page/archive/master.zip)
 
-- npm：暂未发布
+- npm安装：npm install am-page
 
 **2. 引入文件**
 依赖于amaze ui框架，需要先引入框架文件
@@ -28,5 +28,6 @@
         $(element).page(option);
 ```
 
+##License
 
-
+MIT © 2015 - 2016 AllMobilize Inc.

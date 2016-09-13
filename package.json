@@ -1,0 +1,27 @@
+{
+  "name": "am-page",
+  "version": "1.0.0",
+  "description": "Amazeui page plugin",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lscho/am-page.git"
+  },
+  "keywords": [
+    "Amazeui",
+    "page",
+    "plugin"
+  ],
+  "author": "lscho",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/lscho/am-page/issues"
+  },
+  "homepage": "https://github.com/lscho/am-page#readme"
+}
