@@ -5,9 +5,13 @@
     <meta charset="utf-8" />
     <title>amazeui-page demo</title>
     <link rel="stylesheet" type="text/css" href="../dlist/amazeui.min.css">
+    <link rel="stylesheet" type="text/css" href="../dlist/amazeui.page.css">
     <script type="text/javascript" src="../dlist/jquery.min.js"></script>
     <script type="text/javascript" src="../dlist/amazeui.min.js"></script>
     <script type="text/javascript" src="../dlist/amazeui.page.js"></script>
+<link href="http://cdn.bootcss.com/highlight.js/8.0/styles/github.min.css" rel="stylesheet">  
+<script src="http://cdn.bootcss.com/highlight.js/8.0/highlight.min.js"></script>  
+<script >hljs.initHighlightingOnLoad();</script>  
     <style type="text/css">
 .am-input-group-label {background-color: #FFFFFF;border: 0px solid #ccc;}
     </style>
@@ -17,15 +21,23 @@
 <section class="amp-banner">
   <div class="am-container">
     <h1>Amaze UI Page</h1>
-    <p class="">Amaze UI 分页插件</p>
+    <p class="">Amaze UI 分页插件</p>    
   </div>
+<div id="github">
+  <iframe src="http://ghbtns.com/github-btn.html?user=lscho&repo=am-page&type=watch&count=true"
+          allowtransparency="true" frameborder="0" scrolling="0" width="98" height="20"></iframe>
+  <iframe src="http://ghbtns.com/github-btn.html?user=lscho&type=follow&count=true"
+          allowtransparency="true" frameborder="0" scrolling="0" width="156" height="20"></iframe>
+</div>  
 </section>
     <h1>Data API调用</h1>
     <div class="am-panel am-panel-primary">
         <div class="am-panel-hd">普通示例</div>
         <div class="am-panel-bd">
                 <pre>
+                <code>
 &lt;div data-am-page="{pages:10}"&gt;&lt;/div&gt;
+                </code>
                 </pre>
             <div data-am-page="{pages:10}">
                 
@@ -34,13 +46,39 @@
     </div>
 
     <div class="am-panel am-panel-primary">
+        <div class="am-panel-hd">多主题</div>
+        <div class="am-panel-bd">
+            <div class="am-alert am-alert-danger" data-am-alert>
+            <button type="button" class="am-close">&times;</button>
+                <p>多主题需要引入amazeui.page.css,并配置theme参数</p>
+            </div>        
+                <pre>
+                <code>
+            &lt;div data-am-page="{pages:10}"&gt;&lt;/div&gt;
+            &lt;div data-am-page="{pages:10,theme:'secondary'}"&gt;&lt;/div&gt;
+            &lt;div data-am-page="{pages:10,theme:'success'}"&gt;&lt;/div&gt;
+            &lt;div data-am-page="{pages:10,theme:'warning'}"&gt;&lt;/div&gt;
+            &lt;div data-am-page="{pages:10,theme:'danger'}"&gt;&lt;/div&gt;
+                </code>
+                </pre>
+            <div data-am-page="{pages:10}"></div>
+            <div data-am-page="{pages:10,theme:'secondary'}"></div>
+            <div data-am-page="{pages:10,theme:'success'}"></div>
+            <div data-am-page="{pages:10,theme:'warning'}"></div>
+            <div data-am-page="{pages:10,theme:'danger'}"></div>
+        </div>  
+    </div>    
+
+    <div class="am-panel am-panel-primary">
         <div class="am-panel-hd">使用函数</div>
         <div class="am-panel-bd">
                 <pre>
+                <code>
 var jump = function(context) {//注意在全局作用域下定义
     $("#tips").html('当前第：' + context.option.curr + "页");
 }                
 &lt;div data-am-page="{pages:10,jump:jump}"&gt;&lt;/div&gt;
+                </code>
                 </pre>
             <div data-am-page="{pages:10,jump:'jump'}">
                 
@@ -53,7 +91,7 @@ var jump = function(context) {//注意在全局作用域下定义
     <div class="am-panel am-panel-primary">
         <div class="am-panel-hd">普通示例</div>
         <div class="am-panel-bd">
-                <pre>$("#page1").page({pages:10});</pre>
+                <pre><code>$("#page1").page({pages:10});</code></pre>
             <div id="page1">
                 
             </div>
@@ -64,6 +102,7 @@ var jump = function(context) {//注意在全局作用域下定义
         <div class="am-panel-hd">自定义文本并设置分页显示数量</div>
         <div class="am-panel-bd">
                 <pre>
+                <code>
         $("#page2").page({
             pages:10,
             first: "首页", //设置false则不显示，默认为false  
@@ -72,6 +111,7 @@ var jump = function(context) {//注意在全局作用域下定义
             next: '>', //若不显示，设置false即可，默认为下一页
             groups: 3, //连续显示分页数
         });
+                </code>
                 </pre>
             <div id="page2">
                 
@@ -83,13 +123,15 @@ var jump = function(context) {//注意在全局作用域下定义
         <div class="am-panel-hd">只出现上一页/下一页</div>
         <div class="am-panel-bd">
                 <pre>
+                <code>
         $("#page3").page({
             pages:10,
             groups:0,
             jump:function(context){
                 $("#tips3").html("共"+context.option.pages+"页，当前第"+context.option.curr+"页");
             }
-        })                    
+        })         
+                </code>           
                 </pre>
             <div id="page3">
                 
@@ -108,6 +150,7 @@ var jump = function(context) {//注意在全局作用域下定义
                 <p>在web下打开，不要以file形式打开</p>
             </div>        
                 <pre>
+                <code>
                     $("#page4").page({
                         pages:10,
                         groups: 0, //连续显示分页数
@@ -119,7 +162,8 @@ var jump = function(context) {//注意在全局作用域下定义
                                 });
                             }
                         }
-                    })                    
+                    })  
+                    </code>                  
                 </pre>
             <ul id="tips4" class="am-list am-list-static">
                 <li>这里是默认内容</li>
@@ -133,7 +177,7 @@ var jump = function(context) {//注意在全局作用域下定义
     <div class="am-panel am-panel-primary">
         <div class="am-panel-hd">常规跳转</div>
         <div class="am-panel-bd">
-            <pre>$("#page1").page({pages:10});</pre>
+            <pre><code>$("#page1").page({pages:10});</code></pre>
             <div id="page5">
                 
             </div>
@@ -144,6 +188,7 @@ var jump = function(context) {//注意在全局作用域下定义
         <div class="am-panel-hd">全功能演示</div>
         <div class="am-panel-bd">
                 <pre>
+                <code>
     //测试数据
     var data=["北京","上海","广州","深圳","杭州","长沙","合肥","宁夏","成都","西安","南昌","上饶","沈阳","济南","厦门","福州","九江","宜春","赣州","宁波","绍兴","无锡","苏州","徐州","东莞","佛山","中山","成都","武汉","青岛","天津","重庆","南京","九江","香港","澳门","台北"];
     var nums = 5; //每页出现的数量
@@ -210,6 +255,7 @@ var jump = function(context) {//注意在全局作用域下定义
             });
         })
     })
+            </code>
             </pre>
 <div class="am-panel am-panel-default am-margin-top">
     <div class="am-panel-bd">

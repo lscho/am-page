@@ -1,14 +1,14 @@
 ## Amaze ui 分页插件[未完成]
 
-[demo地址](https://eyblog.github.io/am-page/docs/demo.html "demo地址")
+[demo地址](https://lscho.github.io/am-page/docs/demo.html "demo地址")
 
-[文档地址](https://github.com/eyblog/am-page/blob/gh-pages/docs/doc.md "文档地址")
+[文档地址](https://github.com/lscho/am-page/blob/gh-pages/docs/doc.md "文档地址")
 
 ###使用说明
 
 **1. 获取**
 
-- 直接下载：[下载地址](https://github.com/eyblog/am-page/archive/master.zip)
+- 直接下载：[下载地址](https://github.com/lscho/am-page/archive/master.zip)
 
 - npm：暂未发布
 

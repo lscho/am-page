@@ -4,6 +4,7 @@
 		this.$element=data.element;
 		this.first=true;
 		data.option.curr=parseInt(data.option.curr)||1;
+		data.option.theme=data.option.theme||'default';
 		data.option.groups=(typeof data.option.groups!="undefined")?parseInt(data.option.groups):5;
 		this.option=data.option;
 		this._init();
@@ -32,8 +33,7 @@
 		}
 		var $element = this.$element;
 		var $ul=$("<ul></ul>");
-		var type=option.type?option.type:'default';
-		$ul.addClass('am-pagination am-pagination-'+type);
+		$ul.addClass('am-pagination am-pagination-default am-page-'+option.theme);
 		$element.html($ul)
 
 		var list=[];

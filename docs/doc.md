@@ -31,3 +31,36 @@
         console.log('点击分页按钮时会触发jump.page.amui事件');
     });
 ```
+
+##自定义
+
+通过配置参数 theme,并引用amazeui.page.css，则可以开启多主题
+
+如果不引用amazeui.page.css，则参数 theme 无效，默认为蓝色主题。
+
+也可以自行增加 css 样式进行控制
+
+通过 render 函数可以对所有按钮进行控制，如果定义了 render 函数，所有页码元素都会经过 render ，在这个过程中可以进行控制。
+
+render 接收三个参数：context, $element, index
+
+context：对 page对象的引用
+$element：当前页码元素，默认为<li><a></a></li>结构
+index：当前索引，prev、first、1、2.....last、next
+
+可以判断当前索引并对$element进行修改或者重置，即可控制所有按钮。
+
+返回false则使用默认结构和样式，如果返回$element（可以是新的，或者修改过的），则使用$element
+
+实例
+
+```javascript
+        render: function(context, $element, index) { //[context：对this的引用，$element：当前元素，index：当前索引]
+            //逻辑处理
+            if (index == 'last') { //如果索引为last，则设置按钮文字为最后一页
+                $element.find('a').html('最后一页');
+                return $element; //如果有返回值则使用返回值渲染
+            }
+            return false; //没有返回值则按默认处理
+        }
+```
