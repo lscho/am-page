@@ -45,7 +45,9 @@
 render 接收三个参数：context, $element, index
 
 context：对 page对象的引用
-$element：当前页码元素，默认为<li><a></a></li>结构
+
+$element：当前页码元素，默认为&lt;li&gt;&lt;a&gt;&lt;/a&gt;&lt;/li&gt;结构
+
 index：当前索引，prev、first、1、2.....last、next
 
 可以判断当前索引并对$element进行修改或者重置，即可控制所有按钮。
