@@ -15,11 +15,11 @@
 **2. 引入文件**
 依赖于amaze ui框架，需要先引入框架文件
 ```javascript
-    <link rel="stylesheet" type="text/css" href="../dlist/amazeui.min.css">
-    <script type="text/javascript" src="../dlist/jquery.min.js"></script>
-    <script type="text/javascript" src="../dlist/amazeui.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="../dist/amazeui.min.css">
+    <script type="text/javascript" src="../dist/jquery.min.js"></script>
+    <script type="text/javascript" src="../dist/amazeui.min.js"></script>
 
-    <script type="text/javascript" src="../dlist/amazeui.page.js"></script>
+    <script type="text/javascript" src="../dist/amazeui.page.js"></script>
 ```
 
 **3. 开始使用**
