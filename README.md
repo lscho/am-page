@@ -2,7 +2,7 @@
 
 [demo地址](https://lscho.github.io/am-page/docs/demo.html "demo地址")
 
-[文档地址](https://github.com/lscho/am-page/blob/gh-pages/docs/doc.md "文档地址")
+[文档地址](https://github.com/lscho/am-page/blob/master/docs/doc.md "文档地址")
 
 ###使用说明
 
