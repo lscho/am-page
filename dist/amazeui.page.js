@@ -107,7 +107,11 @@
 	}
 
 	page.prototype._jump=function(){
-		if(this.option.jump){
+		if(!this.first&&typeof this.option.jump=='string'&&this.option.jump.indexOf('%page%')>-1){
+			window.location.href=this.option.jump.replace('%page%',this.option.curr);
+			return;
+		}		
+		if(typeof this.option.jump=='function'){
 			this.$element.trigger('jump.page.amui');
 			this.option.jump(this,this.first);
 		}
@@ -142,7 +146,9 @@
 			option.before=window[option.before];
 			option.render=window[option.render];
 			option.after=window[option.after];
-			option.jump=window[option.jump];
+			if(option.jump&&option.jump.indexOf('%page%')==-1){
+				option.jump=window[option.jump];
+			}
 		  	$(this).page(option);
 		})
 	});

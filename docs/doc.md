@@ -13,7 +13,7 @@
 | before  | function(context, next)  |  无 |  分页加载前触发，如果不执行next()则停止加载 |
 | render  | (context, $element, index)  |  无 |  渲染时触发，$element为页码按钮元素，如果返回元素，则使用返回元素，如果返回false则按默认处理 |
 | after  | function(context, next)  |  无 | 加载完成后触发，如果不执行next则不注册jump |
-| jump  | function(context, first)  |  无 |  触发分页后的回调，如果首次加载时后端已处理好分页数据则需要在after中判断终止或在jump中判断first是否为假 |
+| jump  | string or function(context, first)  |  无 |  当触发分页动作后的执行，如果参数为string类型，则替换字符串中的%page%，进行常规跳转。如果参数为function，则执行该函数，如果首次加载时后端已处理好分页数据则需要在after中判断终止或在jump中判断first是否为假 |
 
 
 ##事件

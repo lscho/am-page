@@ -39,11 +39,14 @@ $(function() {
     $("#page5").page({
         pages:10,
         curr:page?page[1]:1,
+        jump:window.location.href.split('?')[0]+"?page=%page%"
+        /*使用回调函数可以处理更复杂的逻辑
         jump:function(context, first){
             if(!first){
                 window.location.href = '?page='+context.option.curr;
             }
-        }
+        }        
+        */
     })
 
     /*全功能演示*/

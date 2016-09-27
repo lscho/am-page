@@ -46,6 +46,24 @@
     </div>
 
     <div class="am-panel am-panel-primary">
+        <div class="am-panel-hd">常规跳转</div>
+        <div class="am-panel-bd">
+            <div class="am-alert am-alert-danger" data-am-alert>
+            <button type="button" class="am-close">&times;</button>
+                <p>静态演示页面无法获取当前页面url，故使用博客链接代替。%page%为动态参数</p>
+            </div>         
+                <pre>
+                <code>
+            &lt;div data-am-page="{pages:10,jump:'http://hersface.com/p/%page%'}"&gt;
+            &lt;/div&gt;
+                </code>
+                </pre>
+            <div data-am-page="{pages:10,jump:'http://hersface.com/p/%page%'}">
+            </div>
+        </div>  
+    </div>    
+
+    <div class="am-panel am-panel-primary">
         <div class="am-panel-hd">多主题</div>
         <div class="am-panel-bd">
             <div class="am-alert am-alert-danger" data-am-alert>
@@ -177,7 +195,21 @@ var jump = function(context) {//注意在全局作用域下定义
     <div class="am-panel am-panel-primary">
         <div class="am-panel-hd">常规跳转</div>
         <div class="am-panel-bd">
-            <pre><code>$("#page1").page({pages:10});</code></pre>
+            <pre><code>
+    var page = window.location.search.match(/page=(\d+)/);
+    $("#page5").page({
+        pages:10,
+        curr:page?page[1]:1,
+        jump:window.location.href.split('?')[0]+"?page=%page%"
+        /*使用回调函数可以处理更复杂的逻辑
+        jump:function(context, first){
+            if(!first){
+                window.location.href = '?page='+context.option.curr;
+            }
+        }        
+        */
+    })                
+            </code></pre>
             <div id="page5">
                 
             </div>
