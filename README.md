@@ -1,4 +1,4 @@
-## Amaze ui 分页插件
+# Amaze ui 分页插件
 
 [demo地址](https://lscho.github.io/am-page/docs/demo.html "demo地址")
 
