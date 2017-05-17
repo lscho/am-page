@@ -28,7 +28,7 @@
 
 	page.prototype._load=function(){
 		var option=this.option;
-		if(!option.pages||option.pages==1){
+		if(!option.pages||option.pages==1){	//此处应该将 pages==1 改为 ==0, 否则, 当分页不足两页的时候, 不会显示列表.
 			return false;
 		}
 		var $element = this.$element;
