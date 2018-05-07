@@ -4,7 +4,7 @@
 
 [文档地址](https://github.com/lscho/am-page/blob/master/docs/doc.md "文档地址")
 
-###使用说明
+## 使用说明
 
 **1. 获取**
 
@@ -28,6 +28,6 @@
         $(element).page(option);
 ```
 
-##License
+## License
 
-MIT © 2015 - 2016 AllMobilize Inc.
+MIT
